@@ -1,0 +1,21 @@
+<%- include("partials/header") -%>
+<h1>Compose</h1>
+
+<!-- A basic form allowing a new title and post to be entered and submitted to the "posts" array declared within app.js -->
+<form action="/compose" method="post">
+  <div class="form-group">
+    <label for="composeTitle">Title</label>
+    <input type="text" class="form-control" name="composeTitle">
+  </div>
+<!-- A bootstrap class of "form-group" has been applied to divs to style the form -->
+  <div class="form-group">
+    <label for="composePost">Post</label>
+    <textarea name="composePost" class="form-control" rows="8" cols="80"></textarea>
+  </div>
+
+<!-- A button used to submit the post that has been composed -->
+  <button type="submit" class="btn btn-primary" name="button">Publish</button>
+</form>
+
+
+<%- include("partials/footer") -%>

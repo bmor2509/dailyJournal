@@ -1,0 +1,32 @@
+<%- include("partials/header") -%>
+
+<h1>Home</h1>
+
+<!-- A variable for the homepage that is populated by a body of text passed from app.js -->
+<p><%= homeText %> </p>
+
+<!-- A button for directing the user to the compose route for creating a new entry -->
+<a class="btn btn-primary" href="/compose" role="button">Compose a new post</a>
+
+<%# A forEach method with a function holding a parameter of "post" which represents an element in an array, then displaying the element's title and content. %>
+<% homeContent.forEach(function(post){ %>
+<h1><%= post.title %></h1>
+<!-- Displays only the first 100 characters of a post as well as a "read more" hyperlink which directs to a "post" page containing the full content of the post. -->
+<p><%= post.content.substring(0, 100) + " ... " %> <a href="/post/<%=post._id %>">Read more</a></p>
+
+<!-- A form that is used for deleting posts from the database using a button -->
+<form action="/delete" , method="Post">
+  <button type="submit" class="btn btn-link" name="deleteButton" value="<%=post._id%>" "  >
+    <!-- Link to a bootstrap icon of a trash can that is used to show the function of the button -->
+    <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+    <path fill-rule="evenodd"
+      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+    </svg>
+  </button>
+
+</form>
+
+<%});%>
+
+<%- include("partials/footer") -%>
